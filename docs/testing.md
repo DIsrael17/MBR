@@ -27,8 +27,8 @@
 
 ## Comandos
 ```bash
-./vendor/bin/sail test            # o: php artisan test
+./vendor/bin/sail composer test     # Pest: suites Unit, Feature y Arch (tests/ArchTest.php)
 ./vendor/bin/sail test --parallel
-./vendor/bin/pint --test
-./vendor/bin/phpstan analyse
+./vendor/bin/sail composer lint     # Pint --test (pint.json)
+./vendor/bin/sail composer analyse  # Larastan (phpstan.neon, nivel 6)
 ```

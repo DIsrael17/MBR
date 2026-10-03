@@ -65,10 +65,12 @@ Nunca subir `.env` ni credenciales al repositorio.
 
 ## Tests
 ```bash
-./vendor/bin/sail test            # usa la base `testing` creada por Sail
-./vendor/bin/sail pint --test
+./vendor/bin/sail composer test     # Pest (unit, feature, arch); usa la base `testing` creada por Sail
+./vendor/bin/sail composer lint     # Pint (preset laravel) en modo verificación
+./vendor/bin/sail composer analyse  # Larastan nivel 6
+./vendor/bin/sail composer format   # aplica Pint
 ```
-Larastan y Pest se agregan en SETUP-002.
+En entornos no productivos `Model::shouldBeStrict()` está activo: el lazy loading, los atributos inexistentes y la asignación masiva descartada lanzan excepción.
 
 ## Flujo Git
 `main` (producción) · `develop` (staging) · `feature/<ID>-descripcion` · `bugfix/*` · `hotfix/*`. Un PR por tarea del backlog, commits con Conventional Commits (`feat(PROP-001): ...`).
