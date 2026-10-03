@@ -43,13 +43,17 @@ docker run --rm -u "$(id -u):$(id -g)" -v "$(pwd):/var/www/html" -w /var/www/htm
 |---|---|
 | App | http://localhost |
 | Mailpit (correo local) | http://localhost:8025 |
+| Panel admin (Filament) | http://localhost/admin |
+| Panel agente/inmobiliaria (Filament) | http://localhost/panel |
 | Horizon (colas) | http://localhost/horizon (solo `APP_ENV=local`) |
 | MySQL | `localhost:3306` (usuario `sail` / `password`) |
 
 **Colas:** `QUEUE_CONNECTION=redis` y el contenedor `horizon` procesa los jobs (`sail logs -f horizon`). Tras cambiar código de jobs: `sail artisan horizon:terminate` (Docker lo reinicia).
 **Archivos:** `FILESYSTEM_DISK=local` en desarrollo; para S3 o compatibles (DigitalOcean Spaces, MinIO) definir `FILESYSTEM_DISK=s3` y `AWS_*` (`AWS_ENDPOINT` + `AWS_USE_PATH_STYLE_ENDPOINT=true` si no es AWS).
 
-Comandos que se agregarán en tareas posteriores: `migrate --seed` con catálogos y super admin (AUTH-005, CAT-*), `locations:import` (CAT-004), `DemoSeeder` (datos demo), paneles `/admin` y `/panel` (SETUP-006).
+**Paneles:** vacíos por ahora; en `local` cualquier usuario autenticado entra y en otros entornos responden 403 hasta que AUTH-005 asigne `admin.access` / `agent_panel.access`. Los assets de Filament se publican en `composer install` (`filament:upgrade`) y no se versionan.
+
+Comandos que se agregarán en tareas posteriores: `migrate --seed` con catálogos y super admin (AUTH-005, CAT-*), `locations:import` (CAT-004), `DemoSeeder` (datos demo).
 
 > Tip: crea un alias `alias sail='./vendor/bin/sail'`.
 
