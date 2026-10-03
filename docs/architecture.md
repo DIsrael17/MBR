@@ -7,7 +7,7 @@
 |---|---|---|
 | Lenguaje / framework | PHP 8.4 (mínimo 8.3), Laravel 13.x | ADR-01 |
 | Base de datos | MySQL 8.0 (alternativa: PostgreSQL 16) | ADR-02 |
-| Frontend público | Blade + Livewire 3 + Alpine.js + Tailwind CSS (Vite) | ADR-03 |
+| Frontend público | Blade + Livewire 4 + Alpine.js (incluido en Livewire) + Tailwind CSS (Vite) | ADR-03 |
 | Paneles (admin / agente / inmobiliaria) | Filament | ADR-04 |
 | Auth web / API | Fortify (starter kit) / Sanctum | ADR-05 |
 | Roles y permisos | spatie/laravel-permission | ADR-06 |

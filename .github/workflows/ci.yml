@@ -54,6 +54,16 @@ jobs:
 
       - run: composer install --no-interaction --prefer-dist --no-progress
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build de assets (Vite)
+        run: npm run build
+
       - name: Preparar .env
         run: |
           cp .env.example .env
