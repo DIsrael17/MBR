@@ -25,6 +25,20 @@ services:
             - mysql
             - redis
             - mailpit
+    horizon:
+        image: 'sail-8.4/app'
+        command: ['php', '/var/www/html/artisan', 'horizon']
+        environment:
+            WWWUSER: '${WWWUSER}'
+            LARAVEL_SAIL: 1
+        volumes:
+            - '.:/var/www/html'
+        networks:
+            - sail
+        depends_on:
+            - laravel.test
+            - redis
+        restart: unless-stopped
     mysql:
         image: 'mysql:8.4'
         ports:
