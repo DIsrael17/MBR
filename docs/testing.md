@@ -22,7 +22,7 @@
 
 ## Reglas
 - Toda tarea del backlog incluye sus tests (Definition of Done).
-- CI bloquea merge si Pint, Larastan o Pest fallan.
+- CI (`.github/workflows/ci.yml`) corre Pint, Larastan y Pest con MySQL 8.4 en cada PR y push a `develop`/`main`; un check fallido bloquea el merge.
 - Cobertura objetivo: ≥ 80 % en `app/Actions`, `app/Services`, `app/Enums`, `app/Policies`.
 
 ## Comandos
