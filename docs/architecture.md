@@ -1,11 +1,11 @@
 # Arquitectura
 
-> Estado: **PROPUESTA — pendiente de aprobación**. Decisiones justificadas en [decisions.md](decisions.md) (ADR-xx).
+> Estado: **APROBADO (2026-10-03)** — decisiones en [decisions.md](decisions.md). Justificación en ADR-xx.
 
 ## 1. Stack tecnológico propuesto
 | Capa | Tecnología | ADR |
 |---|---|---|
-| Lenguaje / framework | PHP 8.3+, Laravel 12.x (versión estable vigente al iniciar) | ADR-01 |
+| Lenguaje / framework | PHP 8.4 (mínimo 8.3), Laravel 13.x | ADR-01 |
 | Base de datos | MySQL 8.0 (alternativa: PostgreSQL 16) | ADR-02 |
 | Frontend público | Blade + Livewire 3 + Alpine.js + Tailwind CSS (Vite) | ADR-03 |
 | Paneles (admin / agente / inmobiliaria) | Filament | ADR-04 |

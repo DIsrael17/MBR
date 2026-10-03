@@ -1,6 +1,6 @@
 # Estrategia de testing
 
-> Estado: **PROPUESTA** (ADR-15).
+> Estado: **APROBADO (2026-10-03)** — decisiones en [decisions.md](decisions.md).
 
 ## Herramientas
 - **Pest** (sobre PHPUnit) — unit, feature, API, arquitectura (`arch()` tests: controllers no usan `DB::` directo, models no dependen de HTTP, etc.).

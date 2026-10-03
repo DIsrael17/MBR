@@ -1,6 +1,6 @@
 # Reglas de negocio
 
-> Estado: **BORRADOR**. Las reglas marcadas con `(Q-xx)` dependen de una pregunta abierta en [decisions.md](decisions.md).
+> Estado: **APROBADO (2026-10-03)** — decisiones en [decisions.md](decisions.md). Las reglas marcadas con `(Q-xx)` se derivan de la decisión correspondiente en decisions.md.
 
 ## BR-PROP — Propiedades
 - **BR-PROP-01** Toda propiedad tiene exactamente un tipo de propiedad y un tipo de operación activos del catálogo.

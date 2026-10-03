@@ -1,6 +1,6 @@
 # Backlog
 
-> Estado: **PROPUESTA — pendiente de aprobación**. Prioridades: **P0** crítico · **P1** alta (MVP) · **P2** media (post-MVP) · **P3** baja.
+> Estado: **APROBADO (2026-10-03)** — decisiones en [decisions.md](decisions.md). Prioridades: **P0** crítico · **P1** alta (MVP) · **P2** media (post-MVP) · **P3** baja.
 > Columna **MVP**: ✔ = entra en el MVP (sección 42). **Bloq.** = depende de una pregunta abierta de [decisions.md](decisions.md).
 > Cada tarea, antes de iniciarse, se detalla en `docs/tasks/<ID>.md` con el formato obligatorio (sección 39). Ya detalladas: ver [tasks/](tasks/).
 > Definition of Done común a todas: código + tests pasando + Pint/Larastan sin errores + docs actualizadas + PR revisado y enfocado en una sola tarea.
@@ -9,7 +9,7 @@
 ## Fase 0 — Análisis
 | ID | Tarea | P | MVP | Tam. | Depende de | Criterios de aceptación |
 |---|---|---|:-:|:-:|---|---|
-| DOC-001 | Documentación inicial de análisis (este paquete) | P0 | ✔ | L | — | Docs en `/docs`; preguntas abiertas respondidas; plan aprobado por el cliente |
+| DOC-001 | Documentación inicial de análisis (este paquete) — **completada** | P0 | ✔ | L | — | Docs en `/docs`; preguntas abiertas respondidas; plan aprobado por el cliente |
 
 ## Fase 1 — Configuración inicial
 | ID | Tarea | P | MVP | Tam. | Depende de | Criterios de aceptación |

@@ -1,6 +1,6 @@
 # API REST v1
 
-> Estado: **PROPUESTA**. Base: `/api/v1`. JSON, autenticación Sanctum (Bearer token). Documentación OpenAPI generada con Scramble en `/docs/api` (solo local/staging o protegida).
+> Estado: **APROBADO (2026-10-03)** — decisiones en [decisions.md](decisions.md). Base: `/api/v1`. JSON, autenticación Sanctum (Bearer token). Documentación OpenAPI generada con Scramble en `/docs/api` (solo local/staging o protegida).
 
 ## Convenciones
 - Respuestas con **API Resources**; colecciones paginadas: `{ data: [], links: {}, meta: {} }`.

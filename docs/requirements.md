@@ -1,6 +1,6 @@
 # Requerimientos
 
-> Estado: **BORRADOR — Fase 0**. Fuente: documento maestro del proyecto. Las ambigüedades abiertas están en [decisions.md](decisions.md) (prefijo `Q-`). Nada marcado como "Propuesta" debe implementarse hasta su confirmación.
+> Estado: **APROBADO (2026-10-03)** — decisiones en [decisions.md](decisions.md). Fuente: documento maestro del proyecto. Ambigüedades resueltas en decisions.md (prefijo `Q-`).
 
 ## 1. Objetivo
 Plataforma web inmobiliaria (Laravel) para publicar, administrar, buscar, filtrar y contactar sobre propiedades en venta, renta, preventa, traspaso y renta temporal/vacacional. Debe ser escalable, segura, mantenible y extensible (API REST versionada para futuras apps móviles).

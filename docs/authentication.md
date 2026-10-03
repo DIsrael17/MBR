@@ -1,6 +1,6 @@
 # Autenticación
 
-> Estado: **PROPUESTA** (ADR-05).
+> Estado: **APROBADO (2026-10-03)** — decisiones en [decisions.md](decisions.md).
 
 ## Web
 - Starter kit oficial de Laravel (Livewire) sobre **Fortify**: registro, login, logout, recuperación de contraseña, verificación de email, cambio de contraseña, perfil con foto (avatar en storage público, 2 MB máx., recorte cuadrado).

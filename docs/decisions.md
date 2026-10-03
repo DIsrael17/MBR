@@ -1,7 +1,9 @@
 # Decisiones y preguntas abiertas
 
 Dos secciones:
-1. **Preguntas abiertas (`Q-xx`)** — ambigüedades o conflictos del documento maestro. Cada una tiene una *propuesta por defecto*. Las marcadas **[BLOQUEANTE]** afectan la arquitectura y deben confirmarse antes de iniciar las tareas indicadas.
+1. **Preguntas abiertas (`Q-xx`)** — ambigüedades o conflictos del documento maestro. Cada una tiene una *propuesta por defecto*. Las marcadas **[BLOQUEANTE]** afectan la arquitectura.
+
+> **Resolución (2026-10-03):** el cliente aprobó **todas las propuestas por defecto** (Q-01 a Q-26) y el stack técnico (ADR-01 a ADR-20). La columna "Propuesta por defecto" es ahora la **decisión vigente**. Q-24: repositorio GitHub pendiente de URL; hosting se define en Fase 16. Q-17: textos legales pendientes del cliente (se usan placeholders).
 2. **Registro de decisiones (`ADR-xx`)** — decisiones técnicas propuestas; pasan a "Aceptada" cuando el cliente aprueba el plan.
 
 ## 1. Preguntas abiertas
@@ -35,27 +37,27 @@ Dos secciones:
 | Q-25 | Historial de propiedades vistas | ¿Retención? | Guardar últimas 100 vistas por usuario; purga mensual vía scheduler. | ANL-* |
 | Q-26 | Contador de visitas | Bots y recargas inflan métricas. | Contar 1 visita por propiedad por sesión/IP por 24 h, excluyendo user-agents de bots; eventos crudos + agregados diarios. | ANL-* |
 
-## 2. Registro de decisiones técnicas (propuestas)
+## 2. Registro de decisiones técnicas (aceptadas)
 
 | ID | Decisión | Alternativas consideradas | Motivo | Estado |
 |---|---|---|---|---|
-| ADR-01 | **Laravel 12.x** (o la versión estable vigente al iniciar SETUP-001) sobre **PHP 8.3+** | Versiones anteriores | Versión estable mantenida; se fija en `composer.json`. | Propuesta |
-| ADR-02 | **MySQL 8.0** (o PostgreSQL 16) | SQLite (solo tests) | Ampliamente soportado por hostings; soporte espacial suficiente para bounding box. Tests con MySQL en CI para paridad. Si el cliente prefiere PostgreSQL + PostGIS, el diseño no cambia. | Propuesta |
-| ADR-03 | Frontend público: **Blade + Livewire 3 + Alpine.js + Tailwind CSS** (Vite) | Inertia + Vue/React con SSR | HTML server-side nativo (SEO) sin infraestructura SSR de Node; un solo lenguaje para el equipo. | Propuesta |
-| ADR-04 | Panel admin y paneles de agente/inmobiliaria: **Filament** (v3/v4 estable) | Panel a la medida en Blade | Reduce semanas de CRUD, tablas, filtros, gráficas; soporta multi-panel y policies de Laravel. | Propuesta |
-| ADR-05 | Autenticación web: **Laravel Fortify** (vía starter kit Livewire); API: **Laravel Sanctum** (tokens) | Passport, JWT | Oficiales, simples; Sanctum cubre apps móviles propias. Socialite para login social (post-MVP). | Propuesta |
-| ADR-06 | Roles/permisos: **spatie/laravel-permission** | Implementación propia | Estándar de facto, probado, cache de permisos. | Propuesta |
-| ADR-07 | Imágenes: **spatie/laravel-medialibrary** (+ conversiones WebP en cola) | Intervention manual + tabla propia | Orden, conversiones, responsive images, S3. Reemplaza la tabla `property_images` por `media` (ver database.md). | Propuesta |
-| ADR-08 | Almacenamiento: disco `local/public` en dev, **S3-compatible** (AWS S3 / Cloudflare R2 / DO Spaces) en prod | Disco local en prod | Escalable, CDN-ready. | Propuesta |
-| ADR-09 | Colas y cache: **Redis** + **Laravel Horizon** | database queue | Rendimiento y monitoreo. En local puede usarse `database`. | Propuesta |
-| ADR-10 | Mapas: **Leaflet + OpenStreetMap** detrás de una interfaz `MapProvider` (frontend) y `GeocoderInterface` (backend) | Google Maps, Mapbox | Sin costo ni API key para MVP; intercambiable por Google/Mapbox. | Propuesta |
-| ADR-11 | Búsqueda MVP: **Eloquent + query filters** con índices; post-MVP: **Laravel Scout + Meilisearch** | Elasticsearch | Suficiente para decenas de miles de registros; Scout permite migrar sin cambiar controladores. | Propuesta |
-| ADR-12 | Máquina de estados de propiedad: **PHP Enum `PropertyStatus` + `PropertyStatusTransitioner` (Action)** con historial | spatie/laravel-model-states | Reglas explícitas y testeables, sin dependencia extra. | Propuesta |
-| ADR-13 | Auditoría: **spatie/laravel-activitylog** | Tabla propia | Probado, polimórfico. | Propuesta |
-| ADR-14 | SEO: **spatie/laravel-sitemap** + componente Blade propio para meta/OG/JSON-LD | artesaos/seotools | Control total, poco código. | Propuesta |
-| ADR-15 | Testing: **Pest**; calidad: **Laravel Pint**, **Larastan** (nivel 6 inicial) | PHPUnit puro | Sintaxis concisa sobre PHPUnit; Pint/Larastan en CI. | Propuesta |
-| ADR-16 | Documentación de API: **Scramble** (OpenAPI generado desde código) | Scribe, Swagger manual | Se mantiene sincronizada automáticamente. | Propuesta |
-| ADR-17 | Correo: **Mailpit** local; **Amazon SES / Postmark / Resend** en prod | — | Proveedor final lo decide el cliente. | Propuesta |
-| ADR-18 | CI: **GitHub Actions** (Pint, Larastan, Pest con MySQL) | — | Integrado con GitHub. | Propuesta |
-| ADR-19 | Entorno local: **Laravel Sail** (Docker: PHP, MySQL, Redis, Mailpit) | Herd, Valet | Paridad entre desarrolladores y CI. | Propuesta |
-| ADR-20 | Ramas: `main` (producción), `develop` (integración/staging), `feature/<ID>-slug`, `bugfix/*`, `hotfix/*`; 1 PR = 1 tarea del backlog; Conventional Commits | Trunk-based | Pedido explícito en el documento maestro. | Propuesta |
+| ADR-01 | **Laravel 13.x** (estable vigente al iniciar SETUP-001) sobre **PHP 8.4** (Sail; mínimo 8.3) | Versiones anteriores | Versión estable mantenida; se fija en `composer.json`. | Aceptada |
+| ADR-02 | **MySQL 8.0** (o PostgreSQL 16) | SQLite (solo tests) | Ampliamente soportado por hostings; soporte espacial suficiente para bounding box. Tests con MySQL en CI para paridad. Si el cliente prefiere PostgreSQL + PostGIS, el diseño no cambia. | Aceptada |
+| ADR-03 | Frontend público: **Blade + Livewire 3 + Alpine.js + Tailwind CSS** (Vite) | Inertia + Vue/React con SSR | HTML server-side nativo (SEO) sin infraestructura SSR de Node; un solo lenguaje para el equipo. | Aceptada |
+| ADR-04 | Panel admin y paneles de agente/inmobiliaria: **Filament** (v3/v4 estable) | Panel a la medida en Blade | Reduce semanas de CRUD, tablas, filtros, gráficas; soporta multi-panel y policies de Laravel. | Aceptada |
+| ADR-05 | Autenticación web: **Laravel Fortify** (vía starter kit Livewire); API: **Laravel Sanctum** (tokens) | Passport, JWT | Oficiales, simples; Sanctum cubre apps móviles propias. Socialite para login social (post-MVP). | Aceptada |
+| ADR-06 | Roles/permisos: **spatie/laravel-permission** | Implementación propia | Estándar de facto, probado, cache de permisos. | Aceptada |
+| ADR-07 | Imágenes: **spatie/laravel-medialibrary** (+ conversiones WebP en cola) | Intervention manual + tabla propia | Orden, conversiones, responsive images, S3. Reemplaza la tabla `property_images` por `media` (ver database.md). | Aceptada |
+| ADR-08 | Almacenamiento: disco `local/public` en dev, **S3-compatible** (AWS S3 / Cloudflare R2 / DO Spaces) en prod | Disco local en prod | Escalable, CDN-ready. | Aceptada |
+| ADR-09 | Colas y cache: **Redis** + **Laravel Horizon** | database queue | Rendimiento y monitoreo. En local puede usarse `database`. | Aceptada |
+| ADR-10 | Mapas: **Leaflet + OpenStreetMap** detrás de una interfaz `MapProvider` (frontend) y `GeocoderInterface` (backend) | Google Maps, Mapbox | Sin costo ni API key para MVP; intercambiable por Google/Mapbox. | Aceptada |
+| ADR-11 | Búsqueda MVP: **Eloquent + query filters** con índices; post-MVP: **Laravel Scout + Meilisearch** | Elasticsearch | Suficiente para decenas de miles de registros; Scout permite migrar sin cambiar controladores. | Aceptada |
+| ADR-12 | Máquina de estados de propiedad: **PHP Enum `PropertyStatus` + `PropertyStatusTransitioner` (Action)** con historial | spatie/laravel-model-states | Reglas explícitas y testeables, sin dependencia extra. | Aceptada |
+| ADR-13 | Auditoría: **spatie/laravel-activitylog** | Tabla propia | Probado, polimórfico. | Aceptada |
+| ADR-14 | SEO: **spatie/laravel-sitemap** + componente Blade propio para meta/OG/JSON-LD | artesaos/seotools | Control total, poco código. | Aceptada |
+| ADR-15 | Testing: **Pest**; calidad: **Laravel Pint**, **Larastan** (nivel 6 inicial) | PHPUnit puro | Sintaxis concisa sobre PHPUnit; Pint/Larastan en CI. | Aceptada |
+| ADR-16 | Documentación de API: **Scramble** (OpenAPI generado desde código) | Scribe, Swagger manual | Se mantiene sincronizada automáticamente. | Aceptada |
+| ADR-17 | Correo: **Mailpit** local; **Amazon SES / Postmark / Resend** en prod | — | Proveedor final lo decide el cliente. | Aceptada |
+| ADR-18 | CI: **GitHub Actions** (Pint, Larastan, Pest con MySQL) | — | Integrado con GitHub. | Aceptada |
+| ADR-19 | Entorno local: **Laravel Sail** (Docker: PHP, MySQL, Redis, Mailpit) | Herd, Valet | Paridad entre desarrolladores y CI. | Aceptada |
+| ADR-20 | Ramas: `main` (producción), `develop` (integración/staging), `feature/<ID>-slug`, `bugfix/*`, `hotfix/*`; 1 PR = 1 tarea del backlog; Conventional Commits | Trunk-based | Pedido explícito en el documento maestro. | Aceptada |

@@ -1,6 +1,6 @@
 # Autorización
 
-> Estado: **PROPUESTA** (depende de Q-01, Q-03, Q-04, Q-12).
+> Estado: **APROBADO (2026-10-03)** — decisiones en [decisions.md](decisions.md).
 Implementación: spatie/laravel-permission (roles + permisos) + **Policies** por modelo para reglas de propiedad (ownership). Los permisos dicen *qué acción puede hacer un rol*; la policy decide *sobre qué registro*.
 
 ## Roles

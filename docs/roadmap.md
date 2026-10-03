@@ -1,6 +1,6 @@
 # Roadmap
 
-> Estado: **PROPUESTA**. Hitos en orden de dependencia; las fechas se fijan cuando se aprueben el plan y las preguntas bloqueantes.
+> Estado: **APROBADO (2026-10-03)** — decisiones en [decisions.md](decisions.md). Hitos en orden de dependencia; las fechas se fijan por hito.
 
 | Hito | Contenido | Tareas | Entregable verificable |
 |---|---|---|---|

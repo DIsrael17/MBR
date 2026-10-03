@@ -1,6 +1,6 @@
 # Base de datos
 
-> Estado: **PROPUESTA**. Motor: MySQL 8.0 (ADR-02). Convenciones: tablas en inglés plural snake_case, PK `id` BIGINT unsigned, FKs `{tabla_singular}_id` con `foreignId()->constrained()`, `timestamps()` en todas, `softDeletes()` donde se indica, dinero en `DECIMAL(14,2)`, coordenadas en `DECIMAL(10,7)`.
+> Estado: **APROBADO (2026-10-03)** — decisiones en [decisions.md](decisions.md). Motor: MySQL 8.0 (ADR-02). Convenciones: tablas en inglés plural snake_case, PK `id` BIGINT unsigned, FKs `{tabla_singular}_id` con `foreignId()->constrained()`, `timestamps()` en todas, `softDeletes()` donde se indica, dinero en `DECIMAL(14,2)`, coordenadas en `DECIMAL(10,7)`.
 
 ## 1. Cambios respecto a la lista del documento maestro
 | Tabla sugerida | Decisión | Motivo |
