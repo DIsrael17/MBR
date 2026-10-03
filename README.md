@@ -21,7 +21,7 @@ Plataforma web (Laravel) para publicar, buscar y contactar sobre propiedades inm
 | [docs/tasks/](docs/tasks/) | Fichas detalladas de tareas (formato obligatorio) |
 
 ## Requisitos
-- Docker + Docker Compose (Laravel Sail). Contenedores: PHP 8.4 (`laravel.test`), MySQL 8.4, Redis, Mailpit.
+- Docker + Docker Compose (Laravel Sail). Contenedores: PHP 8.4 (`laravel.test`), worker de colas (`horizon`), MySQL 8.4, Redis, Mailpit.
 - Alternativa sin Docker: PHP 8.3+, Composer 2, Node 20+, MySQL 8, Redis 7.
 
 ## Instalación local
@@ -36,13 +36,18 @@ docker run --rm -u "$(id -u):$(id -g)" -v "$(pwd):/var/www/html" -w /var/www/htm
 ./vendor/bin/sail up -d
 ./vendor/bin/sail artisan key:generate
 ./vendor/bin/sail artisan migrate
+./vendor/bin/sail artisan storage:link
 ./vendor/bin/sail npm install && ./vendor/bin/sail npm run dev
 ```
 | Servicio | URL |
 |---|---|
 | App | http://localhost |
-| Mailpit | http://localhost:8025 |
+| Mailpit (correo local) | http://localhost:8025 |
+| Horizon (colas) | http://localhost/horizon (solo `APP_ENV=local`) |
 | MySQL | `localhost:3306` (usuario `sail` / `password`) |
+
+**Colas:** `QUEUE_CONNECTION=redis` y el contenedor `horizon` procesa los jobs (`sail logs -f horizon`). Tras cambiar código de jobs: `sail artisan horizon:terminate` (Docker lo reinicia).
+**Archivos:** `FILESYSTEM_DISK=local` en desarrollo; para S3 o compatibles (DigitalOcean Spaces, MinIO) definir `FILESYSTEM_DISK=s3` y `AWS_*` (`AWS_ENDPOINT` + `AWS_USE_PATH_STYLE_ENDPOINT=true` si no es AWS).
 
 Comandos que se agregarán en tareas posteriores: `migrate --seed` con catálogos y super admin (AUTH-005, CAT-*), `locations:import` (CAT-004), `DemoSeeder` (datos demo), paneles `/admin` y `/panel` (SETUP-006).
 
